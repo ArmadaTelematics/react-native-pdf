@@ -14,8 +14,6 @@ import {
   requireNativeComponent,
   View,
   Platform,
-  ProgressBarAndroid,
-  ProgressViewIOS,
   ViewPropTypes
 } from 'react-native'
 import RNFetchBlob from 'react-native-fetch-blob'
@@ -194,25 +192,7 @@ export default class Pdf extends Component {
 
   render() {
     if (!this.state.isDownloaded) {
-      return (
-        <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-        >
-          {this.props.activityIndicator
-            ? this.props.activityIndicator
-            : Platform.OS == 'android'
-              ? <ProgressBarAndroid
-                  progress={this.state.progress}
-                  indeterminate={false}
-                  styleAttr="Horizontal"
-                  style={{ width: 200, height: 2 }}
-                />
-              : <ProgressViewIOS
-                  progress={this.state.progress}
-                  style={{ width: 200, height: 2 }}
-                />}
-        </View>
-      )
+      return null
     } else {
       return (
         <PdfCustom
